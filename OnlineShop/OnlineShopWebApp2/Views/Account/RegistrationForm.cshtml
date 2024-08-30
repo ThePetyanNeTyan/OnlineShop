@@ -1,0 +1,25 @@
+﻿@model Registration
+<div style="margin:30px">
+	<form method="post">
+		<div class="mb-3">
+			<h1 class="lead">Регистрация</h1>
+
+		</div>
+		<div class="mb-3">
+			<input type="hidden" asp-for="ReturnUrl" class="form-control" value="@Model.ReturnUrl">
+		</div>
+			<div class="mb-3"> <input type="email" asp-for="Email" class="form-control" id="validationDefault01" placeholder="Email" required> 
+			<span asp-validation-for="Email" class="text-danger"></span> </div>
+		<div class="mb-3"> <input type="text" asp-for="Name" class="form-control" id="validationDefault02" placeholder="Имя" required minlenght="1" maxlength="20">
+			<span asp-validation-for="Name" class="text-danger"></span> </div>
+		<div class="mb-3"> <input type="number" asp-for="Age" class="form-control" id="validationDefault02" placeholder="Возраст" required min="7" max="100">
+			<span asp-validation-for="Age" class="text-danger"></span> </div>
+		<div class="mb-3"> <input type="text" asp-for="Phone" class="form-control" id="validationDefault02" placeholder="Номер телефона +79xxxxxxxxx" required minlenght="12">
+			<span asp-validation-for="Phone" class="text-danger"></span> </div>
+		<div class="mb-3"> <input type="text" asp-for="PasswordUser" class="form-control" id="validationDefault02" placeholder="Пароль" required minlenght="8" maxlength="20">
+			<span asp-validation-for="PasswordUser" class="text-danger"></span> </div>
+		<div class="mb-3"> <input type="text" asp-for="ConfirmPassword" class="form-control" placeholder="Подтвердить пароль" required> 
+			<span asp-validation-for="ConfirmPassword" class="text-danger"></span> </div>
+		<div class="mb-3"> <button class="btn btn-outline-primary" asp-controller="Account" asp-action="Registration" type="submit">Зарегистрироваться</button> </div>
+	</form>
+</div>

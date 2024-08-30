@@ -1,0 +1,45 @@
+﻿@using OnlineShopWebApp.Areas.Admin.Models;
+
+@model OrderViewModel
+<div style="margin:30px">
+	<form method="post">
+		<h1 class="lead">Заказ № @Model.Id</h1>
+		<table class="table">
+			<thead> </thead>
+			<tbody>
+				<tr>
+					<td scope="col">Дата и время оформления</td>
+					<td class="float-right">@Model.Date @Model.Time</td>
+				</tr>
+				<tr>
+					<td scope="col">Адрес доставки</td>
+					<td class="float-right">@Model.OrderDetails.UserAdress</td>
+				</tr>
+				<tr>
+					<td scope="col">Получатель</td>
+					<td class="float-right">@Model.OrderDetails.UserName</td>
+				</tr>
+				<tr>
+					<td scope="col">Телефон</td>
+					<td class="float-right">@Model.OrderDetails.UserPhone</td>
+				</tr>
+				<tr>
+					<td scope="col">Email</td>
+					<td class="float-right">@Model.OrderDetails.EmailUser</td>
+				</tr>
+				<tr>
+					<td scope="col">Сумма заказа</td>
+					<td class="float-right">@Model.CartProducts.Select(p=>p.Product.Cost).Sum()</td>
+				</tr>
+				<tr>
+					<td scope="col">Статус заказа</td>
+					<td class="float-right">
+						<select asp-for="@Model.Status" asp-items="@Html.GetEnumSelectList<OrderStatusViewModel>()" class="form-control">
+						</select>
+					</td>
+				</tr>
+			<td><button type="submit" class="btn btn-outline-primary" asp-controller="Order" asp-action="EditStatus" asp-route-id="@Model.Id" asp-route-statusOrder="@Model.Status">Сохранить</button></td>
+			</tbody>
+		</table>
+	</form>
+</div>

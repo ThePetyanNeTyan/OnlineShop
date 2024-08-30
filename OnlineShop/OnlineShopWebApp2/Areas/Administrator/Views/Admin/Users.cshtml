@@ -1,0 +1,31 @@
+﻿
+@model List<User>
+<div style="margin:30px">
+<h1 class="lead">Список пользователей</h1>
+
+@{
+    int i = 1;
+	}
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">№</th>
+				<th scope="col">Email</th>
+				<th scope="col">Имя</th>
+				<th scope="col">Номер телефона</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var user in @Model)
+			{
+				<tr>
+					<td>@i</td>
+					<td> <a asp-controller="User" asp-action="UserInform" asp-route-email="@user.Email" class="link-success"> @user.Email </a> </td>
+					<td>@user.UserName</td>
+					<td>@user.PhoneNumber</td>
+				</tr>
+				i += 1;
+			}
+		</tbody>
+	</table> <a asp-controller="User" asp-action="CreateForm" class="btn btn-outline-primary">Добавить пользователя</a>
+</div>

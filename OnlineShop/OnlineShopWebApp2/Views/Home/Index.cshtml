@@ -1,0 +1,24 @@
+﻿@model List<ProductViewModel>
+@await Html.PartialAsync("Search")
+<main>
+	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+		@foreach (var prod in @Model)
+		{
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm">
+					<div class="card-header py-3">
+						<h4 class="my-0 fw-normal">@prod.Name</h4>
+					</div>
+					<div class="card-body">
+						<a asp-controller="Product" asp-action="Index" asp-route-id="@prod.Id" role="button">
+							<img src="@prod.ImgPath.Last()" width="200" height="200">
+						</a>
+						<h1 class="lead">@prod.Cost рублей</h1> <a style="margin:5px" class="btn btn-outline-primary" asp-controller="Comparison" asp-action="Add" asp-route-productId="@prod.Id" role="button">Добавить в сравнение</a>
+						<a style="margin:5px" class="btn btn-outline-primary" asp-controller="Favorites" asp-action="Add" asp-route-productId="@prod.Id" role="button">Добавить в избранное</a>
+						<a style="margin:5px" class="btn btn-outline-primary" asp-controller="Cart" asp-action="Add" asp-route-productId="@prod.Id" role="button">Добавить в корзину</a>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</main>

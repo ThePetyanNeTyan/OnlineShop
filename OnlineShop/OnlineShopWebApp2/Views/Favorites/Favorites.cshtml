@@ -1,0 +1,36 @@
+﻿@using OnlineShop.Db.Models
+@model Favorite
+
+@if (Model.Products.Count==0)
+{
+	<div style="margin:30px">
+		<div class="text-center">
+			<h1 class="lead">Ни чего нет</h1> <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Index" role="button">Вернутся на главную страницу</a>
+		</div>
+	</div>
+}
+else
+{
+	<div style="margin:30px">
+		<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+			<div class="row gx-5">
+				@foreach (var product in @Model.Products)
+				{
+					<div class="col">
+						<div class="card mb-4 rounded-3 shadow-sm">
+							<div class="card-header py-3">
+								<h4 class="my-0 fw-normal">@product.Name</h4>
+							</div>
+							<div class="card-body">
+								<a asp-controller="Product" asp-action="Index" asp-route-id="@product.Id" role="button">
+									<img src="@product.ImgPath.Last()" width="200" height="200">
+								</a>
+								<h5 class="card-title pricing-card-title">@product.Cost рублей</h5> <a class="btn btn-outline-primary" asp-controller="Cart" asp-action="Add" asp-route-productId="@product.Id" role="button">Добавить в корзину</a>
+								<a class="btn btn-outline-danger" asp-controller="Favorites" asp-action="Remove" asp-route-productId="@product.Id" role="button">Удалить из избранного</a>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div> <a class="btn btn-outline-danger" asp-controller="Favorites" asp-action="Clear" role="button">Очистить избранное</a>
+	</div>}

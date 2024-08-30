@@ -1,0 +1,33 @@
+﻿@model UserViewModel
+<div style="margin:30px">
+<form method="post">
+    <div class="mb-3">
+        <h1 class="lead">Регистрация</h1>
+    </div>
+
+
+    <div class="mb-3">
+        <input type="email" asp-for="Email" class="form-control" id="validationDefault01" placeholder="Email" required>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input type="text" asp-for="UserName" class="form-control" id="validationDefault02" placeholder="Имя" required minlenght="1" maxlength="20">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+
+    </div>
+    <div class="mb-3">
+        <input type="number" asp-for="Age" class="form-control" id="validationDefault02" placeholder="Возраст" required min="7" max="100">
+            <span asp-validation-for="Age" class="text-danger"></span>
+
+    </div>
+    <div class="mb-3">
+        <input type="text" asp-for="PhoneNumber" class="form-control" id="validationDefault02" placeholder="Номер телефона +79xx-xxx-xxxx" required minlenght="12">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-outline-primary" asp-controller="User" asp-action="UpdateUser"  type="submit">Сохранить</button>
+    </div>
+</form>
+</div>

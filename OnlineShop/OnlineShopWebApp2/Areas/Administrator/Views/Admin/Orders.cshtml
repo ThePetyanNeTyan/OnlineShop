@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<Order>
+<div style="margin:30px">
+	<h1 class="lead">Список заказов</h1> @{
+		int i = 1;
+	}
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">№</th>
+				<th scope="col">Статус</th>
+				<th scope="col">Пользователь</th>
+				<th scope="col">Дата</th>
+				<th scope="col">Время</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var order in @Model)
+			{
+				<tr>
+					<td>@i</td>
+					 @switch (order.Status)
+					{
+						case OrderStatus.Created:
+							<td>Создан</td>
+							; break;
+						case OrderStatus.Processed:
+							<td>Обработан</td>
+							; break;
+						case OrderStatus.Delivering:
+							<td>В пути</td>
+							; break;
+						case OrderStatus.Delivered:
+							<td>Доставлен</td>
+							; break;
+						case OrderStatus.Canceled:
+							<td>Отменен</td>
+							; break;
+					}
+					<td>@order.OrderDetails.EmailUser</td>
+					<td>@order.Date</td>
+					<td>@order.Time</td>
+					<td><a class="btn btn-outline-primary" asp-controller="Order" asp-action="EditInform" asp-route-id="@order.Id" role="button">Посмотреть заказ</a></td>
+				</tr>
+				i += 1;
+			}
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,25 @@
+﻿@model ProductViewModel
+<div class="text-center">
+	<div style="margin:30px">
+		<form method="post" enctype="multipart/form-data">
+			<div class="mb-3"> <input type="hidden" asp-for="Id" class="form-control" value="@Model.Id">
+				<span asp-validation-for="Id" class="text-danger"></span> </div>
+			<div class="mb-3">
+				<div class="input-group"> <input type="text" asp-for="Name" class="form-control" id="validationDefaultUsername" placeholder="Название продукта" aria-describedby="inputGroupPrepend2" required maxlength="20">
+					<span asp-validation-for="Name" class="text-danger"></span> </div>
+			</div>
+			<div class="mb-3"> <input type="text" asp-for="Cost" class="form-control" placeholder="Цена продукта" id="validationDefault03" required min="200" max="1000">
+				<span asp-validation-for="Cost" class="text-danger"></span> </div>
+			<div class="mb-3"> <input type="text" asp-for="Description" class="form-control" placeholder="Описание продукта" id="validationDefault03" required minlenght="20" maxlength="60">
+				<span asp-validation-for="Description" class="text-danger"></span> </div>
+			<div class="mb-3"> <input type="text" asp-for="ImgPath" value="@Model.ImgPath" class="form-control" > </div>
+			<div class="mb-3"> <input type="text" asp-for="Bonus" class="form-control" placeholder="Бонус продукта" id="validationDefault03" required min="20" max="100"> 
+				<span asp-validation-for="Bonus" class="text-danger"></span> </div>
+			<div class="mb-3">
+				<label>Загрузить новое изображение</label>
+				<input type="file" class="form-control" name="UploadedFile">
+			</div>
+			<div class="mb-3"> <button class="btn btn-outline-primary" asp-controller="Products" asp-action="Modified" asp-route-id="@Model" type="submit">Сохранить</button> </div>
+		</form> <a class="btn btn-outline-primary" asp-controller="Admin" asp-action="Products">Отмена</a>
+	</div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model UserViewModel
+<div style="margin:30px">
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <h1 class="lead">Редактирование</h1>
+        </div>
+
+
+        <div class="mb-3">
+            <input type="hidden" asp-for="Email" class="form-control" value="@Model.Email">
+        </div>
+        <div class="mb-3">
+            <input type="text" asp-for="UserName" class="form-control" id="validationDefault02" placeholder="Имя" required minlenght="1" maxlength="20">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <input type="number" asp-for="Age" class="form-control" id="validationDefault02" placeholder="Возраст" required min="7" max="100">
+            <span asp-validation-for="Age" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <input type="text" asp-for="PhoneNumber" class="form-control" id="validationDefault02" placeholder="Номер телефона +79xx-xxx-xxxx" required minlenght="12">
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label>Загрузить аватар</label>
+            <input type="file" class="form-control" asp-for="UploadedFiles" multiple />
+            <span asp-validation-for="UploadedFiles" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-outline-primary" asp-controller="PrivateOffice" asp-action="Edit" type="submit">Сохранить</button>
+        </div>
+        @foreach(var img in Model.ImgPath)
+        {
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                 
+                    <div class="card-body">
+               
+                     <img src="@img" width="50" height="50">
+
+                        <a style="margin:5px" class="btn btn-outline-primary" asp-controller="PrivateOffice" asp-action="Delete" asp-route-img="@img" asp-route-img="@Model.Email" role="button">Удалить</a>
+                     <a style="margin:5px" class="btn btn-outline-primary" asp-controller="PrivateOffice" asp-action="Delete" asp-route-img="@img" asp-route-email="@Model.Email" role="button">Удалить</a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </form>
+</div>

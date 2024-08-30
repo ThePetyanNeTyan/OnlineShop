@@ -1,0 +1,42 @@
+﻿@model CartViewModel
+
+@if (Model == null || Model.AmountProducts == 0)
+{
+	<div style="margin:30px">
+		<h1 class="lead">Корзина пуста</h1> 
+	</div>
+}
+else
+{
+	<div style="margin:30px">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Название</th>
+					<th scope="col">Цена</th>
+					<th scope="col">Количество</th>
+					<th scope="col">Стоимость</th>
+					<th scope="col">Бонусы</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var product in @Model.CartProducts)
+				{
+					<tr>
+						<td>@product.Product.Name</td>
+						<td>@product.Product.Cost</td>
+						<td>@product.Amount</td>
+						<td>@product.Cost</td>
+						<td>@product.Bonus</td>
+						<td><a class="btn btn-danger" asp-controller="Cart" asp-action="DecreaseProduct" asp-route-productId="@product.Product.Id"  asp-route-cartId="@Model.Id" role="button">-</a></td>
+						<td><a class="btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-productId="@product.Product.Id" role="button">+</a></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<td><a class="btn btn-outline-primary" asp-controller="Home" asp-action="Index" role="button">Продолжить покупки</a></td> <a class="btn btn-outline-danger" asp-controller="Cart" asp-action="Clear" asp-route-id="@Model.Id" role="button">Очистить корзину</a>
+		<h1 class="lead">Итоговая сумма:@Model.TotalPrice</h1> <a class="btn btn-outline-primary" asp-controller="Order" asp-action="OrderForm" role="button">Оформить заказ</a>
+	</div>
+}

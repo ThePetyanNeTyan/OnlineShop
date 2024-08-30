@@ -1,0 +1,12 @@
+﻿﻿@using OnlineShopWebApp.Areas.Admin.Models;
+@model RoleViewModel
+<div class="text-center">
+	<div style="margin:30px">
+		<form method="post" asp-controller="Role" asp-action="Add">
+			<div class="mb-3">
+				<h1 class="lead">Новая роль</h1>
+			</div>
+			<div class="mb-3"> <input asp-for="Name" type="text" class="form-control" id="validationDefault01" placeholder="Название"> <span asp-validation-for="Name" class="text-danger"></span> @Html.ValidationMessageFor(model => model.Name) </div> <button type="submit" class="btn btn-outline-primary">Сохранить</button>
+		</form>
+	</div>
+</div>

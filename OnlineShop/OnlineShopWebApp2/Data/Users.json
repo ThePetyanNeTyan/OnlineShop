@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "08c5f5f3-1138-4469-b3d1-33c2f68bca7d",
+    "Email": "sasha@mail.ru",
+    "Name": "sasha",
+    "Age": 55,
+    "Password": "12345678",
+    "Phone": "+7920-111-2222"
+  },
+  {
+    "Id": "1fad6e7c-ccc9-41b3-837d-101aa3e2a7cf",
+    "Email": "vova@mail.ru",
+    "Name": "vova",
+    "Age": 22,
+    "Password": "12345678",
+    "Phone": "+7999-999-9999"
+  },
+  {
+    "Id": "e3085624-db29-4f28-85e0-7fd2a40c582e",
+    "Email": "masha@mail.ru",
+    "Name": "маша",
+    "Age": 34,
+    "Password": "123123123",
+    "Phone": "+7920-333-3333"
+  },
+  {
+    "Id": "43a164ac-ab15-4012-a3fa-c2137ae2cdb2",
+    "Email": "kola@mail.ru",
+    "Name": "kola",
+    "Age": 52,
+    "Password": "12345678999",
+    "Phone": "+7555-555-5555"
+  }
+]

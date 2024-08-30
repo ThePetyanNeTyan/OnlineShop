@@ -1,0 +1,27 @@
+﻿@model OrderDetailsViewModel
+
+<div style="margin:30px">
+	<h1 class="lead">Введите данные</h1>
+	<form method="post" asp-controller="Order" asp-action="Save">
+	
+		<div class="mb-3"> <input type="text" asp-for="UserAdress" class="form-control" id="validationDefault01" placeholder="Улица/Дом/Подъезд/Этаж/Квартира" required>
+			<span asp-validation-for="UserAdress" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<div class="input-group">
+				<input type="text" asp-for="UserName" class="form-control" id="validationDefaultUsername" placeholder="Имя получателя" aria-describedby="inputGroupPrepend2" required>
+				<span asp-validation-for="UserName" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="mb-3"> <input type="text" asp-for="UserPhone" class="form-control" placeholder="Номер телефона +79xx-xxx-xxxx" id="validationDefault03" required minlenght="12"> 
+			<span asp-validation-for="UserPhone" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<input type="hidden" asp-for="EmailUser" class="form-control" value="@Model.EmailUser" >
+		
+		</div>
+
+	
+		<div class="mb-3"> <button class="btn btn-outline-primary" type="submit">Оформить заказ</button> </div>
+	</form>
+</div>

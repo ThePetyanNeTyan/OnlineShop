@@ -1,0 +1,75 @@
+﻿@model UserViewModel
+<div style="margin:30px">
+	<h1 class="lead"> <a class="p-2" asp-area="" asp-controller="PrivateOffice" asp-action="EditForm" asp-route-email="@Model.Email" role="button">Редактировать</a></h1>
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				<thead> </thead>
+				<tbody>
+					<tr>
+						<td>Имя</td>
+						<td class="float-right">@Model.UserName </td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td class="float-right">@Model.Email </td>
+					</tr>
+					<tr>
+						<td>Возраст</td>
+						<td class="float-right">@Model.Age </td>
+					</tr>
+					<tr>
+						<td>Номер телефона</td>
+						<td class="float-right">@Model.PhoneNumber </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<h1 class="lead">Список заказов</h1> @{
+		int i = 1;
+	}
+	@if (ViewBag.Orders.Count != 0)
+	{
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">№</th>
+					<th scope="col">Статус</th>
+					<th scope="col">Дата</th>
+					<th scope="col">Время</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var order in ViewBag.Orders)
+				{
+					<tr>
+						<td>@i</td>
+						@switch (order.Status)
+						{
+							case OrderStatus.Created:
+								<td>Создан</td>
+								; break;
+							case OrderStatus.Processed:
+								<td>Обработан</td>
+								; break;
+							case OrderStatus.Delivering:
+								<td>В пути</td>
+								; break;
+							case OrderStatus.Delivered:
+								<td>Доставлен</td>
+								; break;
+							case OrderStatus.Canceled:
+								<td>Отменен</td>
+								; break;
+						}
+						<td>@order.Date</td>
+						<td>@order.Time</td>
+					</tr>
+					i += 1;
+				}
+
+		</tbody>
+	</table>}
+
+</div>
